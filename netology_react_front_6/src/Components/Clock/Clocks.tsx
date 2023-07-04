@@ -1,6 +1,14 @@
 import moment from "moment-timezone";
 import { useEffect, useState } from "react";
-import { Button, Container, FloatingLabel, Form } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  FloatingLabel,
+  Form,
+  Row,
+  Table,
+} from "react-bootstrap";
 
 interface IClock {
   zoneName: string;
@@ -13,6 +21,14 @@ export function Clocks() {
   const [clock, setClock] = useState<IClock[]>([]);
   const [currentZone, setCurrentZone] = useState<number>(0);
 
+  console.log(clock);
+
+  const deleteClock = (item: number) => {
+    const updatedArray = [...clock];
+    updatedArray.splice(item, 1);
+    setClock(updatedArray);
+  };
+
   useEffect(() => {
     setSearchZone(
       zone.filter(
@@ -24,43 +40,69 @@ export function Clocks() {
 
   return (
     <>
-      <FloatingLabel controlId="floatingInput" label="Поиск" className="mb-3">
-        <Form.Control
-          value={searchString}
-          type="text"
-          placeholder="Поиск"
-          onChange={(e) => setSearchString(e.target.value)}
-        />
-      </FloatingLabel>
-      <Form.Select
-        value={currentZone}
-        onChange={(e) => setCurrentZone(Number(e.target.value))}
-      >
-        {searchZone.map((name: string, index: number) => (
-          <option value={index} key={index}>
-            {name}
-          </option>
-        ))}
-      </Form.Select>
-      <Button
-        variant="secondary"
-        onClick={() =>
-          setClock((oldDate) => [
-            ...oldDate,
-            { zoneName: searchZone[currentZone] },
-          ])
-        }
-      >
-        Добавить
-      </Button>
-      {clock.map((item, number) => (
-        <Clock zone={item.zoneName} />
-      ))}
+      <Container>
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Поиск"
+          className="mx-3 my-3"
+        >
+          <Form.Control
+            value={searchString}
+            type="text"
+            placeholder="Поиск"
+            onChange={(e) => setSearchString(e.target.value)}
+          />
+        </FloatingLabel>
+        <Form.Select
+          className="mx-3 my-3"
+          value={currentZone}
+          onChange={(e) => setCurrentZone(Number(e.target.value))}
+        >
+          {searchZone.map((name: string, index: number) => (
+            <option value={index} key={index}>
+              {name}
+            </option>
+          ))}
+        </Form.Select>
+        <Button
+          className="mx-3 my-3"
+          variant="secondary"
+          onClick={() =>
+            setClock((oldDate) => [
+              ...oldDate,
+              { zoneName: searchZone[currentZone] },
+            ])
+          }
+        >
+          Добавить
+        </Button>
+      </Container>
+      <Container>
+        <Table striped className="mx-3 my-3">
+          <tbody>
+            {clock.map((item, number) => (
+              <Clock
+                zone={item.zoneName}
+                index={number}
+                deleteFun={deleteClock}
+              />
+            ))}
+          </tbody>
+        </Table>
+      </Container>
     </>
   );
 }
 
-function Clock({ zone }: { zone: string }) {
+function Clock({
+  zone,
+  index,
+  deleteFun,
+}: {
+  zone: string;
+  index: number;
+  deleteFun: (item: number) => void;
+}) {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -70,17 +112,24 @@ function Clock({ zone }: { zone: string }) {
     return () => clearInterval(interval);
   }, []);
 
-  const timeOf =  moment.tz(time, zone);
-  const hours = timeOf.hours()
+  const timeOf = moment.tz(time, zone);
+  const hours = timeOf.hours();
   const minutes = timeOf.minutes();
   const seconds = timeOf.seconds();
 
   return (
-    <>
-      <Container>
-        <h1>{`${hours}:${minutes}:${seconds}`} {zone} </h1>
-        
-      </Container>
-    </>
+    <tr className="d-flex">
+      <td className="col-3">
+        <h2>{`${hours}:${minutes}:${seconds}`}</h2>
+      </td>
+      <td className="col-3">
+        <h2>{zone}</h2>
+      </td>
+      <td className="col-3">
+        <Button variant="secondary" onClick={() => deleteFun(index)}>
+          Удалить
+        </Button>
+      </td>
+    </tr>
   );
 }
