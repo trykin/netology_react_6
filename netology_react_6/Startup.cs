@@ -50,7 +50,9 @@ namespace netology_react_6
 
             app.UseAuthorization();
 
-            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader());
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {
