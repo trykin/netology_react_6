@@ -1,10 +1,11 @@
 import { Tab, Tabs } from "react-bootstrap";
 import { Notes } from "./Components/Notes/Notes";
+import { Clocks } from "./Components/Clock/Clocks";
 
 function App() {
   return (
       <Tabs
-          defaultActiveKey="profile"
+          defaultActiveKey="Notes"
           id="uncontrolled-tab-example"
           className="mb-3"
       >
@@ -12,8 +13,8 @@ function App() {
           <Tab eventKey="Notes" title="Notes">
               <Notes />
           </Tab>
-          <Tab eventKey="profile" title="Profile">
-              Tab content for Profile
+          <Tab eventKey="Clock" title="Clock">
+              <Clocks/>
           </Tab>
           </Tabs>
   );
