@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netology_react_6", "netology_react_6\netology_react_6.csproj", "{F92B135F-7844-4444-B73D-2DDC39993EC7}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "netology_react_front_6", "netology_react_front_6\netology_react_front_6.esproj", "{9C24773D-88DB-460C-8A18-50A909D1B3F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F92B135F-7844-4444-B73D-2DDC39993EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F92B135F-7844-4444-B73D-2DDC39993EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F92B135F-7844-4444-B73D-2DDC39993EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F92B135F-7844-4444-B73D-2DDC39993EC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C24773D-88DB-460C-8A18-50A909D1B3F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C24773D-88DB-460C-8A18-50A909D1B3F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C24773D-88DB-460C-8A18-50A909D1B3F1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9C24773D-88DB-460C-8A18-50A909D1B3F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C24773D-88DB-460C-8A18-50A909D1B3F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C24773D-88DB-460C-8A18-50A909D1B3F1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4D97C41-F790-4AC1-A0C4-B7BB6EA912F3}
+	EndGlobalSection
+EndGlobal
